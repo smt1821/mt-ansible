@@ -1,0 +1,15 @@
+---
+- name: WindowsService
+  hosts: win
+
+  tasks:
+    - name: CreateService
+      win_shell: C:/services/6.5.179.0/1_install.bat
+      register: result
+      ignore_errors: yes
+    - name: Display output
+      debug:
+        var: result.stdout_lines
+
+        
+        

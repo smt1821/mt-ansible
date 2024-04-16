@@ -1,0 +1,16 @@
+---
+ - name : Ensure Domain exists
+   hosts: win
+   gather_facts: true
+
+   tasks:
+   - win_domain:
+        dns_domain_name: testdomain.net
+        safe_mode_password: ansibleTestPass2023
+     register: check_domain
+    
+   - win_reboot:
+        shutdown_timeout: 600
+        reboot_timeout: 600
+        post_reboot_delay: 300
+     when: check_domain.changed

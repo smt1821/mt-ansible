@@ -1,0 +1,9 @@
+---
+- name: Install File
+  hosts: win
+
+  tasks:
+   - name: Download File
+     ansible.windows.win_get_url:
+       url: https://go.microsoft.com/fwlink/?linkid=866664&clcid=0x409&culture=en-us&country=us
+       dest: D:\

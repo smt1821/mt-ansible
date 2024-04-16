@@ -1,0 +1,14 @@
+# The latest powershell gives us more flexiablity to use Windows DSC items
+---
+- name: "test"
+  hosts: "win" 
+
+  tasks:
+    - name: test
+      win_chocolatey:
+       name: powershell
+       
+       
+       
+       
+       

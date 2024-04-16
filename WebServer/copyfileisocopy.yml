@@ -1,0 +1,12 @@
+---
+- name: copy
+  hosts: win
+  vars:
+    source: "/home/mtroot/files/sql/SQLServer2017-x64-ENU-Dev.iso"
+    destination: D:\SQLServer2017-x64-ENU-Dev.iso
+
+  tasks:
+   - name: copy File
+     ansible.windows.win_copy:
+       src: "{{ source }}"
+       dest: "{{ destination }}"

@@ -1,0 +1,41 @@
+---
+- name: Windows Feature
+  hosts: Windows2019
+  gather_facts: true
+#  vars:
+#    name:
+#     - wuauserv
+
+#  vars:
+#    firstname: "ABC"
+#    lastname: "XYZ"
+
+  tasks:
+    - name: Disable Windows Updates Service
+      win_service:
+        name: wuauserv
+        state: stopped
+        enabled: false
+
+    - name: Run ipconfig and return IP address information.
+      raw: ipconfig
+      register: ipconfig
+    - debug: var=ipconfig
+
+#    - name: Reboot
+#      win_reboot:
+#      when: reboot.reboot_required
+
+# Install and enable IIS on Windows server 2019
+    - name: Install IIS
+      win_feature:
+        name: "Web-Server"
+        state: present
+        restart: yes
+        include_sub_features: yes
+        include_management_tools: yes
+# Copy the index.html file and rename to ansible.html under C:\inetpub\wwwroot. Must use \\ instead of \ for accessing directory on Windows server.
+    - name: Copy index text page
+      win_copy:
+        src: "files/index.html"
+        dest: "C:\\inetpub\\wwwroot\\ansible.html"

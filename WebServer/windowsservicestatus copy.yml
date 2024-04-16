@@ -1,0 +1,9 @@
+---
+- name: WindowsService
+  hosts: win
+
+  tasks:
+    - name: StopService
+      ansible.windows.win_service:
+        name: spooler
+        start_mode: disabled

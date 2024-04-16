@@ -1,0 +1,18 @@
+---
+- name: WindowsService
+  hosts: win
+
+  tasks:
+    - name: This will be installed the Intelex Service Windows Service in Auto mode
+      win_command:  C:\Windows\Microsoft.NET\Framework\v4.0.30319\Installutil.exe /name="Intelex Service, Login v6.5.179.0" Intelex.Service.exe
+      args:
+        chdir: C:\services\6.5.179.0
+        #executable: cmd
+      register: result
+      ignore_errors: yes
+    - name: Display output
+      debug:
+        var: result.stdout_lines
+
+        
+        

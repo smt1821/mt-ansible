@@ -1,0 +1,15 @@
+---
+ - name : Domain Admin User adding
+   hosts: win
+   gather_facts: true
+
+   tasks:
+
+   - name: Domain Admin adding
+     win_domain_user:
+        name: test        
+        password: 1q2w3eASD!2023
+        state: present
+        
+        groups:
+          - Domain Admins    

@@ -1,0 +1,14 @@
+---
+- name: Install IIS
+  hosts: win
+
+  tasks:
+    - name: installation (Web-Server only)
+      ansible.windows.win_feature:
+        name: Web-Server
+        state: present
+
+    - name: Install IIS (Web-Server and Web-Common-Http)
+      win_service:
+        name: W3Svc
+        state: started

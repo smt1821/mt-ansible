@@ -1,0 +1,10 @@
+---
+  - name: invoke ps script
+    hosts: win
+
+    tasks:
+      - name: run script
+        ansible.windows.win_powershell:
+          script: |
+            Restart-Computer -Force
+          #executable: pwsh.exe

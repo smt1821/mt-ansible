@@ -1,0 +1,13 @@
+---
+  - name: invoke ps script
+    hosts: win
+
+    tasks:
+      - name: run script
+        ansible.windows.win_powershell:
+          script: |
+           invoke-command -ComputerName mt-poc-web2 -ScriptBlock {set-location C:\SQL2017
+           .\setup.exe /q /ACTION=Install /FEATURES=SQL /INSTANCENAME=MSSQLSERVER /SQLSVCACCOUNT="mtadmin" /SQLSVCPASSWORD="1q2w3eASD@1310" /SQLSYSADMINACCOUNTS="mtadmin" /AGTSVCACCOUNT="NT AUTHORITY\NETWORK SERVICE" /SQLSVCINSTANTFILEINIT="True" /IACCEPTSQLSERVERLICENSETERMS}
+            
+          #Restart-Computer -Force
+          #executable: pwsh.exe

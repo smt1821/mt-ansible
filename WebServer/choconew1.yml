@@ -1,0 +1,22 @@
+---
+ - name : Enforce choco
+   hosts: win
+   gather_facts: true
+
+   tasks:
+   - name: Install choco
+     win_chocolatey:
+      name: 
+       - chocolatey
+       - chocolatey-core.extension
+      state: present
+
+      # The latest powershell gives us more flexiablity to use Windows DSC items
+   #- name: Windows | Install Powershell 5.0
+     #win_chocolatey:
+       #name: 
+       #- powershell
+       #version: '5.0'
+
+
+

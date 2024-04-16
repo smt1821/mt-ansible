@@ -1,0 +1,17 @@
+---
+- name: WindowsService
+  hosts: win
+
+  tasks:
+    - name: CreateService
+      ansible.windows.win_shell: "C:\services\6.5.179.0\1_install.bat
+      args:
+        executable: cmd
+      register: result
+      ignore_errors: yes
+    - name: Display output
+      debug:
+        var: result.stdout_lines
+
+        
+        

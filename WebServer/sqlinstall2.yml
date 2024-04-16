@@ -1,0 +1,12 @@
+---
+- name: Install SQL
+  hosts: win
+  
+  tasks:
+    - name: Install SQL 2019
+      win_chocolatey:
+        name: sql-server-2019
+        version: '15.0.2000.20210324'
+        source: https://go.microsoft.com/fwlink/?linkid
+        state: present
+

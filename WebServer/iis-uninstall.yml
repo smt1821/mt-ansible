@@ -1,0 +1,9 @@
+---
+- name: Uninstall IIS
+  hosts: win
+
+  tasks:
+    - name: installation (Web-Server only)
+      ansible.windows.win_feature:
+        name: Web-Server
+        state: absent

@@ -1,0 +1,17 @@
+---
+ - name : Enforce choco
+   hosts: win
+   gather_facts: true
+
+   collections:
+   - chocolatey.chocolatey
+
+   tasks:
+
+   - name: Default choco
+     chocolatey.chocolatey.win_chocolatey_source:
+       name: chocolatey
+       state: present
+
+
+

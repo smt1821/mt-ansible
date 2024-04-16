@@ -1,0 +1,18 @@
+---
+- name: WindowsService
+  hosts: win
+
+  tasks:
+    - name: This will be installed the SQL Service Windows Service in Auto mode
+      win_command: C:\SQL2017\setup.exe /ConfigurationFile=ConfigurationFile.ini
+      args:
+        chdir: C:\SQL2017
+        #executable: cmd
+      register: result
+      ignore_errors: yes
+    - name: Display output
+      debug:
+        var: result.stdout_lines
+
+        
+        

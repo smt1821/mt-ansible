@@ -1,0 +1,15 @@
+---
+- name : win_chocolatey module demo
+  hosts: win
+  become: false
+  gather_facts: false
+  vars:
+   - packages:
+      - sql-server-management-studio
+
+  tasks:
+  - name : install packages
+    chocolatey.chocolatey.win_chocolatey:
+      name: "{{ packages }}"
+      state: present
+
