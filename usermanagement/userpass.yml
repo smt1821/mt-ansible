@@ -1,0 +1,9 @@
+---
+- name: Set password for a user
+  hosts: your_server
+  become: yes
+  tasks:
+    - name: Set password for the user
+      user:
+        name: your_username
+        password: "{{ 'your_password' | password_hash('sha512') }}"
