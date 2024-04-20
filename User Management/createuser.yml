@@ -1,0 +1,9 @@
+---
+- name: Create a new user
+  hosts: your_server
+  become: yes
+  tasks:
+    - name: Add a new user
+      user:
+        name: your_username
+        state: present
