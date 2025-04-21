@@ -1,0 +1,9 @@
+---
+- name: Test vault variable
+  hosts: windowsdc
+  gather_facts: no
+
+  tasks:
+    - name: Show the admin password from vault
+      ansible.builtin.debug:
+        msg: "windows_admin_password = {{ windows_admin_password }}"

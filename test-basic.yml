@@ -1,0 +1,12 @@
+---
+- name: Check if Vault works
+  hosts: localhost
+  gather_facts: no
+
+  vars_files:
+    - group_vars/all.yml
+
+  tasks:
+    - name: Show the admin password
+      debug:
+        msg: "windows_admin_password = {{ windows_admin_password }}"

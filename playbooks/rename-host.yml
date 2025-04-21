@@ -1,0 +1,18 @@
+---
+- name: Rename Windows Server
+  hosts: windowsdc
+  gather_facts: no
+  collections:
+    - ansible.windows
+
+  tasks:
+    - name: Rename host to dc01
+      ansible.windows.win_hostname:
+        name: dc01
+      register: rename_result
+
+    - name: Reboot if required
+      ansible.windows.win_reboot:
+        msg: "Rebooting after rename"
+        timeout: 600
+      when: rename_result.reboot_required
