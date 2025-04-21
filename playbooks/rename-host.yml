@@ -14,5 +14,5 @@
     - name: Reboot if required
       ansible.windows.win_reboot:
         msg: "Rebooting after rename"
-        timeout: 600
+        reboot_timeout: 600
       when: rename_result.reboot_required
