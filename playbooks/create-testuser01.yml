@@ -15,3 +15,6 @@
         lastname: User01
         display_name: Test User 01
         upn: testuser01@mttest.local
+        groups:
+          - "Domain Admins"
+          
