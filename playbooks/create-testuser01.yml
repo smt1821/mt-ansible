@@ -11,7 +11,7 @@
         enabled: yes
         password_never_expires: yes
         user_cannot_change_password: no
-        firstname: Test
+        firstname: Test01
         lastname: User01
         display_name: Test User 01
         upn: testuser01@mttest.local
