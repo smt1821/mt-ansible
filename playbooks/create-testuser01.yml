@@ -1,0 +1,17 @@
+- name: Create user testuser01 in mttest-user OU
+  hosts: windowsdc
+  gather_facts: no
+  tasks:
+    - name: Create user testuser01
+      community.windows.win_domain_user:
+        name: testuser01
+        password: "{{ windows_admin_password }}"
+        path: "OU=mttest-user,DC=mttest,DC=local"
+        state: present
+        enabled: yes
+        password_never_expires: yes
+        user_cannot_change_password: no
+        firstname: Test
+        lastname: User01
+        display_name: Test User 01
+        upn: testuser01@mttest.local
