@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: my-win  # or your custom pool name where DC01 is registered
+  name: 'Azure Pipelines'  # or your custom pool name where DC01 is registered
   demands:
     - agent.name -equals DC01
 
