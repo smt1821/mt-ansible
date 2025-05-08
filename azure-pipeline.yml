@@ -1,0 +1,11 @@
+trigger:
+- main
+
+pool:
+  name: Default  # or your custom pool name where DC01 is registered
+  demands:
+    - agent.name -equals DC01
+
+steps:
+- script: echo "Agent DC01 is running this job successfully"
+  displayName: 'Run test on self-hosted agent'
