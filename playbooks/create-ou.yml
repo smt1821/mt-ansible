@@ -1,0 +1,28 @@
+
+---
+- name: Create OU "mttest-user" in mttest.local via PowerShell
+  hosts: windowsdc
+  gather_facts: no
+  tasks:
+    - name: Create "mttest-user" OU under mttest.local
+      win_shell: |
+        Import-Module ActiveDirectory
+        if (-not (Get-ADOrganizationalUnit -Filter "Name -eq 'mttest-user'" -ErrorAction SilentlyContinue)) {
+          New-ADOrganizationalUnit -Name "mttest-user" -Path "DC=mttest,DC=local"
+        }
+
+- name: Create OU "mttest-admin" in mttest.local
+  hosts: windowsdc
+  gather_facts: no
+  tasks:
+    - name: Create "mttest-admin" OU under mttest.local
+      community.windows.win_domain_ou:
+        name: mttest-admin
+        path: "DC=mttest,DC=local"
+        state: present
+        domain_username: Administrator
+        domain_password: "{{ windows_admin_password }}"
+
+
+
+

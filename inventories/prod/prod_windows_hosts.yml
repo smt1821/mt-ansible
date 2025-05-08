@@ -1,0 +1,10 @@
+all:
+  hosts:
+    windowsdc:
+      ansible_host: 192.168.106.132
+      ansible_user: Administrator
+      ansible_password: "{{ windows_admin_password }}"
+      ansible_connection: winrm
+      ansible_port: 5985
+      ansible_winrm_transport: basic
+      ansible_winrm_server_cert_validation: ignore
